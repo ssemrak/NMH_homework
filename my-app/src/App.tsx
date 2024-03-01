@@ -25,8 +25,10 @@ const App: FC = () => {
     <div css={styles.appStyle}>
       <div css={styles.leftPane}>
         <BookForm onAddBook={addBook} />
+        {/*  TODO spravit button na pridavanie knih po 1000ckach cez faker */}
       </div>
       <div css={styles.rightPane}>
+        {/*  TODO spravit infinite scroll pre vela zaznamov */}
         <BookList books={books} onBookClick={handleBookClick} />
       </div>
       {selectedBook && <Modal book={selectedBook} onClose={closeModal} />}

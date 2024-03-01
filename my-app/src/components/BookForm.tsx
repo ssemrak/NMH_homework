@@ -17,6 +17,7 @@ function BookForm({ onAddBook }) {
 
   return (
     <form css={styles.form} onSubmit={handleSubmit}>
+      {/* TODO hodit inputy do zvlast componentu */}
       <input
         css={styles.input}
         type="text"

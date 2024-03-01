@@ -12,6 +12,7 @@ export default ({ book, onClose }: ModalProps) => (
       <p>
         <strong>Description:</strong> {book.description}
       </p>
+      {/* TODO Buttony tiez do zvlast componentu */}
       <button css={styles.closeButton} onClick={onClose}>
         Close
       </button>
