@@ -1,5 +1,7 @@
 import { css } from '@emotion/react'
 
+/*  TODO krajsie stylovanie */
+
 export const leftPane = css`
   flex: 1 1 auto;
   padding: 20px;
@@ -8,12 +10,21 @@ export const leftPane = css`
     width: 100%;
   }
 `
+
 export const rightPane = css`
   flex: 1 1 auto;
   padding: 20px;
+  height: 100%;
+
+  /*  TODO list aj pre malu obrazovku*/
   @media (max-width: 768px) {
     width: 100%;
   }
+`
+export const testButtons = css`
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
 `
 
 export const appStyle = css`
@@ -22,68 +33,5 @@ export const appStyle = css`
 
   @media (max-width: 768px) {
     flex-direction: column;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-
-  input[type='text'],
-  textarea {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  textarea {
-    resize: vertical;
-  }
-
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  button:hover {
-    background-color: #0056b3;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    background-color: #f0f0f0;
-    padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-  }
-
-  .modal-content h2 {
-    margin-top: 0;
-  }
-
-  .modal-content button {
-    margin-top: 10px;
-    padding: 8px 16px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .modal-content button:hover {
-    background-color: #0056b3;
   }
 `

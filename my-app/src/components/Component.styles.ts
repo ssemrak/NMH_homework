@@ -5,32 +5,9 @@ export const form = css`
   flex-direction: column;
 `
 
-export const input = css`
-  margin-bottom: 10px;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`
-
-export const textarea = css`
-  resize: vertical;
-`
-
-export const submitButton = css`
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    background-color: #0056b3;
-  }
-`
-
 export const list = css`
+  height: calc(100% - 40px);
+  overflow: auto;
   list-style-type: none;
   padding: 0;
 `
@@ -66,14 +43,4 @@ export const headline = css`
 
 export const closeButton = css`
   margin-top: 10px;
-  padding: 8px 16px;
-  font-size: 16px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  &:hover {
-    background-color: #0056b3;
-  }
 `

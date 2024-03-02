@@ -13,3 +13,13 @@ export type BookListProps = {
   books: Book[]
   onBookClick: (book: Book) => void
 }
+
+export type BookFormProps = {
+  onAddBooks: onAddBookType
+}
+
+export type GeneratorProps = {
+  onAddBooks: onAddBookType
+}
+
+export type onAddBookType = (newBooks: Array<Book>) => void

@@ -4,13 +4,14 @@ import BookList from './components/BookList'
 import Modal from './components/Modal'
 import { type Book } from './components/Components.types'
 import * as styles from './App.styles'
+import Generator from './components/Generator'
 
 const App: FC = () => {
-  const [books, setBooks] = useState<Book[]>([])
+  const [books, setBooks] = useState<Array<Book>>([])
   const [selectedBook, setSelectedBook] = useState<Book | null>(null)
 
-  const addBook = (book: Book) => {
-    setBooks([...books, book])
+  const addBooks = (newBooks: Array<Book>) => {
+    setBooks([...books, ...newBooks])
   }
 
   const handleBookClick = (book: Book) => {
@@ -24,11 +25,11 @@ const App: FC = () => {
   return (
     <div css={styles.appStyle}>
       <div css={styles.leftPane}>
-        <BookForm onAddBook={addBook} />
-        {/*  TODO spravit button na pridavanie knih po 1000ckach cez faker */}
+        <BookForm onAddBooks={addBooks} />
+
+        <Generator onAddBooks={addBooks} />
       </div>
       <div css={styles.rightPane}>
-        {/*  TODO spravit infinite scroll pre vela zaznamov */}
         <BookList books={books} onBookClick={handleBookClick} />
       </div>
       {selectedBook && <Modal book={selectedBook} onClose={closeModal} />}

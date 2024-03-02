@@ -1,31 +1,29 @@
-import { useState, FC, ChangeEvent } from 'react'
+import { useState, FC } from 'react'
 import { BookListProps, Book } from './Components.types'
 import * as styles from './Component.styles'
+import Input from './BasicComponents/Input'
 
-const BookList: FC<BookListProps> = ({ books, onBookClick }) => {
-  const [query, setQuery] = useState('')
+const BookList: FC<BookListProps> = (props) => {
+  const [query, setQuery] = useState<string>('')
 
-  const handleFilterChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setQuery(e.target.value)
-  }
-
-  const filteredBooks = books.filter((book) =>
+  const filteredBooks = props.books.filter((book) =>
     book.title.toLowerCase().includes(query.toLowerCase()),
   )
 
   const handleBookClick = (book: Book) => {
-    onBookClick(book)
+    props.onBookClick(book)
   }
 
   return (
-    <div>
-      <input
-        css={styles.input}
-        type="text"
+    <>
+      {/*  TODO spravit infinite scroll pre vela zaznamov */}
+      <Input
         placeholder="Search by title"
+        required={true}
+        setValue={setQuery}
         value={query}
-        onChange={handleFilterChange}
       />
+
       <ul css={styles.list}>
         {filteredBooks.map((book, index) => (
           <li
@@ -37,7 +35,7 @@ const BookList: FC<BookListProps> = ({ books, onBookClick }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   )
 }
 

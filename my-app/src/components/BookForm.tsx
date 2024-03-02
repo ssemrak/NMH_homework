@@ -1,15 +1,19 @@
-import { useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import * as styles from './Component.styles'
+import Input from './BasicComponents/Input'
+import Textarea from './BasicComponents/Textarea'
+import { BookFormProps } from './Components.types'
+import Button from './BasicComponents/Button'
 
-function BookForm({ onAddBook }) {
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [description, setDescription] = useState('')
+const BookForm = ({ onAddBooks }: BookFormProps) => {
+  const [title, setTitle] = useState<string>('')
+  const [author, setAuthor] = useState<string>('')
+  const [description, setDescription] = useState<string>('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const book = { title, author, description }
-    onAddBook(book)
+    onAddBooks([book])
     setTitle('')
     setAuthor('')
     setDescription('')
@@ -17,32 +21,22 @@ function BookForm({ onAddBook }) {
 
   return (
     <form css={styles.form} onSubmit={handleSubmit}>
-      {/* TODO hodit inputy do zvlast componentu */}
-      <input
-        css={styles.input}
-        type="text"
+      <Input<string>
         placeholder="Title"
+        required={true}
+        setValue={setTitle}
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        required
       />
-      <input
-        css={styles.input}
-        type="text"
-        placeholder="Author"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-      />
-      <textarea
-        css={[styles.input, styles.textarea]}
+
+      <Input<string> placeholder="Author" setValue={setAuthor} value={author} />
+
+      <Textarea
         placeholder="Description"
+        setValue={setDescription}
         value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        maxLength={300}
       />
-      <button css={styles.submitButton} type="submit">
-        Add Book
-      </button>
+
+      <Button>Add Book</Button>
     </form>
   )
 }
