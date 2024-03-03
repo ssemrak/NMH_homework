@@ -45,6 +45,7 @@
     "@craco/craco": "^7.1.0",
     "@emotion/babel-plugin": "^11.11.0",
     "@faker-js/faker": "^8.4.1",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "react-window": "^1.8.10"
   }
 }

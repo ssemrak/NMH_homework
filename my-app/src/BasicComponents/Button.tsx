@@ -7,6 +7,7 @@ const Button: FC<ButtonProps> = (props) => (
     css={styles.button}
     className={props.className}
     type={props.type}
+    disabled={props.disabled ?? undefined}
     onClick={props.onClick}
   >
     {props.children}

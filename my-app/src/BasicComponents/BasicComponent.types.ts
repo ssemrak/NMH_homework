@@ -1,8 +1,10 @@
-import { ReactNode } from 'react'
+import { ReactNode, MouseEvent } from 'react'
 
 export type InputProps<T> = {
+  className?: string
   placeholder?: string
   required?: boolean
+  error?: boolean
   setValue: (val: T) => void
   type?: 'text' | 'number'
   value: T
@@ -17,8 +19,9 @@ export type TextareaProps = {
 }
 
 export type ButtonProps = {
+  disabled?: boolean
   children?: ReactNode
   className?: string
   type?: 'button' | 'submit' | 'reset' | undefined
-  onClick?: () => void
+  onClick?: (e: MouseEvent) => void
 }

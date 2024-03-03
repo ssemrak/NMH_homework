@@ -1,24 +1,5 @@
 import { css } from '@emotion/react'
 
-export const form = css`
-  display: flex;
-  flex-direction: column;
-`
-
-export const list = css`
-  height: calc(100% - 40px);
-  overflow: auto;
-  list-style-type: none;
-  padding: 0;
-`
-
-export const listItem = css`
-  background-color: #f0f0f0;
-  padding: 15px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-`
-
 export const modalOverlay = css`
   position: fixed;
   top: 0;
@@ -29,12 +10,17 @@ export const modalOverlay = css`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
+`
+
+export const loading = css`
+  color: white;
 `
 
 export const modalContent = css`
   background-color: white;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 4px;
 `
 
 export const headline = css`
@@ -42,5 +28,5 @@ export const headline = css`
 `
 
 export const closeButton = css`
-  margin-top: 10px;
+  margin-top: 12px;
 `

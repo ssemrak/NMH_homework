@@ -1,10 +1,10 @@
 import { useState, FC } from 'react'
-import BookForm from './components/BookForm'
-import BookList from './components/BookList'
-import Modal from './components/Modal'
-import { type Book } from './components/Components.types'
+import BookForm from './BookForm/BookForm'
+import BookList from './BookList/BookList'
+import Modal from './Modal/Modal'
+import { type Book } from './BookForm/BookForm.types'
 import * as styles from './App.styles'
-import Generator from './components/Generator'
+import Generator from './Generator/Generator'
 
 const App: FC = () => {
   const [books, setBooks] = useState<Array<Book>>([])
@@ -26,12 +26,11 @@ const App: FC = () => {
     <div css={styles.appStyle}>
       <div css={styles.leftPane}>
         <BookForm onAddBooks={addBooks} />
-
         <Generator onAddBooks={addBooks} />
       </div>
-      <div css={styles.rightPane}>
-        <BookList books={books} onBookClick={handleBookClick} />
-      </div>
+
+      <BookList books={books} onBookClick={handleBookClick} />
+
       {selectedBook && <Modal book={selectedBook} onClose={closeModal} />}
     </div>
   )

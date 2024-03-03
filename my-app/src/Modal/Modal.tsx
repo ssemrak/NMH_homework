@@ -1,9 +1,11 @@
-import React from 'react'
-import * as styles from './Component.styles'
-import { ModalProps } from './Components.types'
-import Button from './BasicComponents/Button'
+import React, { FC } from 'react'
+import * as styles from './Modal.styles'
+import { ModalProps } from './Modal.types'
+import Button from '../BasicComponents/Button'
 
-const Modal = ({ book, onClose }: ModalProps) => (
+// TODO prestylovat
+
+const Modal: FC<ModalProps> = ({ book, onClose }) => (
   <div css={styles.modalOverlay} onClick={onClose}>
     <div css={styles.modalContent} onClick={(e) => e.stopPropagation()}>
       <h2 css={styles.headline}>{book.title}</h2>

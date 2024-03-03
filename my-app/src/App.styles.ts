@@ -1,37 +1,29 @@
 import { css } from '@emotion/react'
 
-/*  TODO krajsie stylovanie */
-
 export const leftPane = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   flex: 1 1 auto;
   padding: 20px;
   background-color: #f9f9f9;
-  @media (max-width: 768px) {
+
+  @media (max-width: 576px) {
     width: 100%;
   }
-`
-
-export const rightPane = css`
-  flex: 1 1 auto;
-  padding: 20px;
-  height: 100%;
-
-  /*  TODO list aj pre malu obrazovku*/
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`
-export const testButtons = css`
-  display: flex;
-  gap: 16px;
-  margin-top: 20px;
 `
 
 export const appStyle = css`
   display: flex;
   height: 100vh;
+  max-width: 1300px;
+  margin: auto;
 
-  @media (max-width: 768px) {
+  h2 {
+    font-weight: 500;
+  }
+
+  @media (max-width: 576px) {
     flex-direction: column;
   }
 `

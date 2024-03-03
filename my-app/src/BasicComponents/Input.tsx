@@ -13,7 +13,8 @@ const Input = <T extends string | number>(props: InputProps<T>) => {
 
   return (
     <input
-      css={styles.input}
+      className={props.className}
+      css={[styles.input, props.error && styles.inputError]}
       type={props.type ?? 'text'}
       placeholder={props.placeholder}
       value={props.value}
