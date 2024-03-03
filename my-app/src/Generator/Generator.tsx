@@ -16,15 +16,15 @@ const getBooksCountToGenarate = (count: number) => {
 const fakeBook = () => {
   return {
     author: faker.person.fullName(),
-    title: faker.commerce.productName(),
     description: faker.lorem.sentences(3).substring(0, MAX_CHAR_LENGTH),
+    title: faker.commerce.productName(),
   }
 }
 
 const quickBook = {
-  author: 'Quick author',
-  description: 'Short desc',
-  title: 'Quick title',
+  author: 'Simple author',
+  description: 'Simple desc',
+  title: 'Simple title',
 }
 
 const Generator: FC<GeneratorProps> = ({ onAddBooks }) => {
@@ -67,7 +67,7 @@ const Generator: FC<GeneratorProps> = ({ onAddBooks }) => {
         Generate random books (max {MAX_FAKER_BOOKS})
       </Button>
 
-      <Button onClick={() => generate(true)}>Quick generate</Button>
+      <Button onClick={() => generate(true)}>Generate simple books</Button>
     </div>
   )
 }
