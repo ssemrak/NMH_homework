@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { FC } from 'react'
 import * as styles from './Modal.styles'
+import { LoadingProps } from './Modal.types'
 
-const Loading = () => (
+const Loading: FC<LoadingProps> = ({ booksCount }) => (
   <div css={styles.modalOverlay}>
-    <h2 css={styles.loading}>Creating books...</h2>
+    <h2 css={styles.loading}>Creating {booksCount} books...</h2>
   </div>
 )
 

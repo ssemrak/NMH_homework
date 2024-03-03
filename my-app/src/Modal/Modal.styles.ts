@@ -20,7 +20,13 @@ export const loading = css`
 export const modalContent = css`
   background-color: white;
   padding: 20px;
-  border-radius: 4px;
+  border-radius: 12px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  line-height: 1.3em;
+  min-width: 50%;
 `
 
 export const headline = css`

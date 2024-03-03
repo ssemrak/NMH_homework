@@ -5,6 +5,8 @@ import Textarea from '../BasicComponents/Textarea'
 import { BookFormProps } from './BookForm.types'
 import Button from '../BasicComponents/Button'
 
+export const MAX_CHAR_LENGTH = 300
+
 const BookForm: FC<BookFormProps> = ({ onAddBooks }) => {
   const [title, setTitle] = useState<string>('')
   const [error, setError] = useState<boolean>(false)
@@ -43,6 +45,7 @@ const BookForm: FC<BookFormProps> = ({ onAddBooks }) => {
         placeholder="Description"
         setValue={setDescription}
         value={description}
+        maxLength={MAX_CHAR_LENGTH}
       />
 
       <Button onClick={handleSubmit}>Add Book</Button>

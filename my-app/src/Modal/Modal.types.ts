@@ -4,3 +4,7 @@ export type ModalProps = {
   book: Book
   onClose: () => void
 }
+
+export type LoadingProps = {
+  booksCount: number
+}

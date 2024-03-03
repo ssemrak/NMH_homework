@@ -12,8 +12,7 @@ export type BookListProps = {
 
 export type RowProps = {
   book: Book
-  callback: (book: Book) => void
+  onClickCallback: (book: Book) => void
   style: ClassAttributes<HTMLDivElement> &
     HTMLAttributes<HTMLDivElement> & { css?: Interpolation<Theme> }
-  index: number
 }

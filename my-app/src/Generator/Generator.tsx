@@ -5,50 +5,53 @@ import Input from '../BasicComponents/Input'
 import Button from '../BasicComponents/Button'
 import type { Book, GeneratorProps } from './Generator.types'
 import Loading from '../Modal/Loading'
+import { MAX_CHAR_LENGTH } from '../BookForm/BookForm'
 
 const MAX_FAKER_BOOKS = 9999
 
-const Generator: FC<GeneratorProps> = (props: GeneratorProps) => {
+const getBooksCountToGenarate = (count: number) => {
+  return Math.min(count, MAX_FAKER_BOOKS)
+}
+
+const fakeBook = () => {
+  return {
+    author: faker.person.fullName(),
+    title: faker.commerce.productName(),
+    description: faker.lorem.sentences(3).substring(0, MAX_CHAR_LENGTH),
+  }
+}
+
+const quickBook = {
+  author: 'Quick author',
+  description: 'Short desc',
+  title: 'Quick title',
+}
+
+const Generator: FC<GeneratorProps> = ({ onAddBooks }) => {
   const [countToGenerate, setCountToGenerate] = useState<number>(10)
   const [loading, setLoading] = useState<boolean>(false)
 
-  const generate = () => {
+  const generate = (quick: boolean = false) => {
+    !quick && setCountToGenerate(getBooksCountToGenarate(countToGenerate))
     setLoading(true)
+
     setTimeout(() => {
       const newBooks: Array<Book> = []
       Array.from(
-        Array(
-          countToGenerate > MAX_FAKER_BOOKS ? MAX_FAKER_BOOKS : countToGenerate,
-        ).keys(),
+        Array(getBooksCountToGenarate(countToGenerate)).keys(),
       ).forEach(() => {
-        newBooks.push({
-          author: faker.person.fullName(),
-          title: faker.commerce.productName(),
-          description: faker.lorem.sentences(3).substring(0, 300),
-        })
+        newBooks.push(quick ? quickBook : fakeBook())
       })
-      props.onAddBooks(newBooks)
+      onAddBooks(newBooks)
       setLoading(false)
-    }, 1000)
-  }
-
-  const quick = () => {
-    setLoading(true)
-    const newBooks: Array<Book> = []
-    Array.from(Array(countToGenerate).keys()).forEach(() => {
-      newBooks.push({
-        author: 'Quick author',
-        description: 'Short desc',
-        title: 'Quick title',
-      })
-    })
-    props.onAddBooks(newBooks)
-    setLoading(false)
+    }, 1)
   }
 
   return (
-    <div css={styles.testButtons}>
-      {loading && <Loading />}
+    <div css={styles.generator}>
+      {loading && (
+        <Loading booksCount={getBooksCountToGenarate(countToGenerate)} />
+      )}
 
       <h4>For testing</h4>
 
@@ -60,11 +63,11 @@ const Generator: FC<GeneratorProps> = (props: GeneratorProps) => {
         }}
       />
 
-      <Button onClick={generate}>
+      <Button onClick={() => generate()}>
         Generate random books (max {MAX_FAKER_BOOKS})
       </Button>
 
-      <Button onClick={quick}>Quick generate</Button>
+      <Button onClick={() => generate(true)}>Quick generate</Button>
     </div>
   )
 }

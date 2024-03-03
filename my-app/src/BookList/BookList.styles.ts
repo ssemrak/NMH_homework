@@ -8,6 +8,7 @@ export const listItem = css`
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  cursor: pointer;
 `
 
 export const search = css`

@@ -5,20 +5,26 @@ import * as styles from './BookList.styles'
 import Input from '../BasicComponents/Input'
 import Row from './Row'
 
-const SEARCHBOX_HEIGHT_WITH_PADDING = 80
+const SEARCHBAR_HEIGHT_WITH_PADDING = 80
+const BOOK_FORM_HEIGHT = 350
+const MIN_HEIGHT = 350
 
-const BookList: FC<BookListProps> = (props) => {
+const getHeight = (newHeight: number) => {
+  return Math.max(newHeight, MIN_HEIGHT)
+}
+
+const BookList: FC<BookListProps> = ({ onBookClick, books }) => {
   const [query, setQuery] = useState<string>('')
   const [listHeight, setListHeight] = useState(
-    window.innerHeight / 2 - SEARCHBOX_HEIGHT_WITH_PADDING,
+    getHeight(window.innerHeight / 2 - SEARCHBAR_HEIGHT_WITH_PADDING),
   )
 
   function handleResize() {
     const newHeight =
       window.innerWidth <= 576
-        ? window.innerHeight / 2 - SEARCHBOX_HEIGHT_WITH_PADDING
-        : window.innerHeight - SEARCHBOX_HEIGHT_WITH_PADDING
-    setListHeight(newHeight)
+        ? window.innerHeight - BOOK_FORM_HEIGHT
+        : window.innerHeight - SEARCHBAR_HEIGHT_WITH_PADDING
+    setListHeight(getHeight(newHeight))
   }
   useEffect(() => {
     window.addEventListener('resize', handleResize)
@@ -28,7 +34,7 @@ const BookList: FC<BookListProps> = (props) => {
     }
   }, [])
 
-  const filteredBooks = props.books.filter((book) =>
+  const filteredBooks = books.filter((book) =>
     book.title.toLowerCase().includes(query.toLowerCase()),
   )
 
@@ -50,10 +56,9 @@ const BookList: FC<BookListProps> = (props) => {
       >
         {({ index, style }) => (
           <Row
-            index={index}
             book={filteredBooks[index]}
             style={style}
-            callback={props.onBookClick}
+            onClickCallback={onBookClick}
           />
         )}
       </FixedSizeList>
